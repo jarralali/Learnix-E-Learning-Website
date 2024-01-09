@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="reg-style.css" type="text/css">
+    <style>
+        /* Add your additional CSS styling for the registration page here */
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="form form2">
+            <h2>Register here</h2>
+            <form method="post" action="register.php" onsubmit="return validateForm()">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" id="email" placeholder="Email Address" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="submit" value="Register">
+            </form>
+
+            <p class="link">Already have an account?<br>
+                <a href="index.html">Log in here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Basic email validation
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Password length validation (you can add more complex rules)
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

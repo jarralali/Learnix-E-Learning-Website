@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"></h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="user.html">HOME</a></li>
+                    <li><a href="user.html">ABOUT</a></li>
+                    <li><a href="user.html">SERVICES</a></li>
+                    <li><a href="user.html">COURSES</a></li>
+                    <li><a href="user.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h1> <br><span></span> <br></h1>
+            <br>
+            <br>
+            <p class="par">Welcome to our outstanding e-learning platform!<br>
+                We take immense pride in offering an enriching and dynamic online 
+                educational experience <br> that empowers learners of all ages and 
+                backgrounds to unlock their full potential.
+                <br>Take a look at our courses.</p>
+
+            <button class="cn"><a href="registration.html">Join US</a></button>
+
+            <div class="form">
+                <h2>Login here</h2>
+                <form id="loginForm" method="post" action="login.php">
+                    <input type="email" name="email" placeholder="Enter email here">
+                    <input type="password" name="password" placeholder="Enter password here">
+                    <button class="btnn" type="submit"><a href="user.html">Login</button></a>
+                </form>
+
+                <p class="link">Don't have an account<br>
+                    <a href="registration.html">Sign up here</a>
+                </p>
+                <p class="liw">Log in with</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+    
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+    
+            // Send a POST request to the login.php script
+            fetch('login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'email=' + email + '&password=' + password
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.includes("User Logged In!")) {
+                    window.location.href = 'welcome.html';
+                } else if (data.includes("Admin Logged In!")) {
+                    window.location.href = 'adminloggedin.html';
+                } else {
+                    alert(data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    
+</body>
+</html>
