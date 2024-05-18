@@ -44,7 +44,7 @@ class Authentication {
     }
 }
 
-// Usage
+// Usage of the file
 $databaseConnection = DatabaseConnectionFactory::createConnection();
 $authentication = new Authentication($databaseConnection);
 
